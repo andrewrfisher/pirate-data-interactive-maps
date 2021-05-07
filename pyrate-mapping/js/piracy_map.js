@@ -91,14 +91,6 @@ d3.json(flaskURL).then(function(response) {
         Other: 0
     };
 
-    //initializing markerClusters
-    markerClusters = L.markerClusterGroup();
-
-    //function for markersize so the more points within a marker the larger it is
-    function markerSize(attacks){
-        return attacks * 2
-    }
-
     // Loop through data
     for (var i = 0; i < response.length; i++) {
   
@@ -168,21 +160,21 @@ d3.json(flaskURL).then(function(response) {
         //updated attackType count
         attackTypeCount[attackCode]++;
 
-        //adding layer to markerCluster and indicating which icons go where
-       markerClusters.addLayer(L.marker(coord, {
+        //making sure the marker variable is correct and icons match
+        var attackMarkers = L.marker(coord, {
             icon: icons[attackCode]
-        }));
+        });
 
 
         //adding markers to layers created above
-        markerClusters.addTo(layers[attackCode]);
+        attackMarkers.addTo(layers[attackCode]);
 
         //binding popups to the markers
-        markerClusters.bindPopup("<h3> Attack Type: " + response[i]["Type of Attack"] + "</h3> <hr><h3> Vessel Type: " + response[i]["Type of Vessel"] + 
+        attackMarkers.bindPopup("<h3> Attack Type: " + response[i]["Type of Attack"] + "</h3> <hr><h3> Vessel Type: " + response[i]["Type of Vessel"] + 
                                 "</h3><hr><h3> Date: " + response[i]["Incident Date"] + "</h3><hr><h3> Narrative: </h3>" + "<p>" + response[i]["Narrative"] + "</p>");
   
         // Add our markers and cluster layer to the map
-        myMap.addLayer(markerClusters);
+        myMap.addLayer(attackMarkers);
 
         // Call the updateLegend function, which will... update the legend!
         updateLegend(attackTypeCount);

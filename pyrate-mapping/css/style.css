@@ -1,0 +1,53 @@
+/* remove default margin and padding from body */
+body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* set map, body, and html to 100% of the screen size */
+  #map,
+  body,
+  html {
+    height: 100%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+
+
+.legend {
+  padding: 10px;
+  font-family: Sanchez, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #555;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.legend .title {
+  color: black;
+  font-size: 16px;
+}
+.legend .attempted {
+  color: #4053d3;
+}
+
+.legend .boarded {
+  color: #ddb310;
+}
+
+.legend .hijacked {
+  color: #b51d14;
+}
+
+.legend .fired {
+  color: #006e00;
+}
+
+.legend .other {
+  color: black;
+}
